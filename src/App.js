@@ -1,54 +1,25 @@
-import React from 'react';
+import React,{Component} from 'react';
 import './App.css';
-
-// function Hello(props) {
-//   return (
-//     <div id="hello"><h1>{props.text}</h1>
-//       <h3>{props.subtext}</h3>
-//     </div>
-//   )
-// }
+import tareas from './sample/tareas.json';
 
 
+class App extends Component{
 
-class Hello extends React.Component {
+state = {
+  tareas:tareas
+}
 
-  state = {
-    show: true
-  }
+    render(){
+      return <div>
+        {this.state.tareas.map(e=><p key={e.id}>
+        <h1>Titulo: {e.titulo}</h1> 
+        <h2>ID: {e.id}</h2> 
+        <h3>Descripcion: {e.descripcion}</h3> 
 
-  cambio = () => {
-    this.setState({ show: !this.state.show })
-  }
-
-  render() {
-    if (this.state.show) {
-      return (
-        <div id="hello">
-          <h1>{this.props.text}</h1>
-          <h3>{this.props.subtext}</h3>
-          <button onClick={this.cambio}>Cambiar</button>
-        </div>)
-    } else {
-      return (<div>
-        <h1>No hay elementos</h1>
-        <button onClick={this.cambio}>Regresar</button>
+        </p>)}
       </div>
-      )
-
     }
-  }
-}
+} 
 
-
-function App() {
-  return (
-    <div > Componente
-      <Hello text="Hola" subtext="snegra"></Hello>
-      <Hello text="aHello" subtext="black"></Hello>
-      <Hello text="Buenas" subtext="perrohp"></Hello>
-    </div>
-  );
-}
 
 export default App;
