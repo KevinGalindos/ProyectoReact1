@@ -1,24 +1,52 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+// function Hello(props) {
+//   return (
+//     <div id="hello"><h1>{props.text}</h1>
+//       <h3>{props.subtext}</h3>
+//     </div>
+//   )
+// }
+
+
+
+class Hello extends React.Component {
+
+  state = {
+    show: true
+  }
+
+  cambio = () => {
+    this.setState({ show: !this.state.show })
+  }
+
+  render() {
+    if (this.state.show) {
+      return (
+        <div id="hello">
+          <h1>{this.props.text}</h1>
+          <h3>{this.props.subtext}</h3>
+          <button onClick={this.cambio}>Cambiar</button>
+        </div>)
+    } else {
+      return (<div>
+        <h1>No hay elementos</h1>
+        <button onClick={this.cambio}>Regresar</button>
+      </div>
+      )
+
+    }
+  }
+}
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div > Componente
+      <Hello text="Hola" subtext="snegra"></Hello>
+      <Hello text="aHello" subtext="black"></Hello>
+      <Hello text="Buenas" subtext="perrohp"></Hello>
     </div>
   );
 }
