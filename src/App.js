@@ -1,25 +1,21 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import tareas from './sample/tareas.json';
+import Tareas from './components/Tareas';
 
 
-class App extends Component{
+class App extends Component {
 
-state = {
-  tareas:tareas
+  state = {
+    tareas: tareas
+  }
+
+  render() {
+    return <div>
+      <Tareas tareas={this.state.tareas}/>
+    </div>
+  }
 }
-
-    render(){
-      return <div>
-        {this.state.tareas.map(e=><p key={e.id}>
-        <h1>Titulo: {e.titulo}</h1> 
-        <h2>ID: {e.id}</h2> 
-        <h3>Descripcion: {e.descripcion}</h3> 
-
-        </p>)}
-      </div>
-    }
-} 
 
 
 export default App;
