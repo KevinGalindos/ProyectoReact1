@@ -9,7 +9,7 @@ export default class FormTareas extends Component {
     }
 
     onSubmit = e => {
-        
+        this.props.AgregarTarea(this.state.titulo, this.state.descripcion);
         e.preventDefault()
     }
 
@@ -21,6 +21,7 @@ export default class FormTareas extends Component {
     }
 
     render() {
+       
         return (
             <form onSubmit={this.onSubmit}>
                 <input
