@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import tareas from './sample/tareas.json';
 import Tareas from './components/Tareas';
-import FormTareas from'./components/FormTareas'
+import FormTareas from './components/FormTareas';
+import Publicaciones from './components/Publicaciones.js';
 
 
 class App extends Component {
@@ -11,40 +12,41 @@ class App extends Component {
     tareas: tareas
   }
 
-  AgregarTarea =(titulo,descripcion) => {
-    const nuevaTarea ={
+  AgregarTarea = (titulo, descripcion) => {
+    const nuevaTarea = {
       titulo: titulo,
-      descripcion:descripcion,
+      descripcion: descripcion,
       id: this.state.tareas.length
 
     }
     this.setState({
-      tareas:[...this.state.tareas,nuevaTarea]
+      tareas: [...this.state.tareas, nuevaTarea]
     })
   }
 
-  BorrarTarea = (id) =>{
-    const NuevasT = this.state.tareas.filter(tarea=>tarea.id!==id);
-    this.setState({tareas:NuevasT})
+  BorrarTarea = (id) => {
+    const NuevasT = this.state.tareas.filter(tarea => tarea.id !== id);
+    this.setState({ tareas: NuevasT })
   }
 
-  CambiarEstado = id =>{
-    const NuevasT = this.state.tareas.map(tarea=>{
-      if(tarea.id ===id){
-      tarea.cumplido =!tarea.cumplido
+  CambiarEstado = id => {
+    const NuevasT = this.state.tareas.map(tarea => {
+      if (tarea.id === id) {
+        tarea.cumplido = !tarea.cumplido
       }
       return tarea;
     });
-    this.setState({tareas : NuevasT})
+    this.setState({ tareas: NuevasT })
   }
 
   render() {
     return <div>
-      <FormTareas AgregarTarea={this.AgregarTarea}/>
+      <FormTareas AgregarTarea={this.AgregarTarea} />
       <Tareas tareas={this.state.tareas}
-       BorrarTarea={this.BorrarTarea}
-       CambiarEstado={this.CambiarEstado}
+        BorrarTarea={this.BorrarTarea}
+        CambiarEstado={this.CambiarEstado}
       />
+      <Publicaciones />
     </div>
   }
 }
