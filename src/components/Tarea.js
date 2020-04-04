@@ -20,8 +20,9 @@ class Tarea extends Component {
             <h1>Titulo: {tarea.titulo}</h1>
             <h2>ID: {tarea.id}</h2>
             <h3>Descripcion: {tarea.descripcion}</h3>
-            <input type="checkbox" />
-            <button style={BtnBorrar}>
+            <input type="checkbox" onChange ={this.props.CambiarEstado.bind(this,tarea.id)}/>
+            <button style={BtnBorrar}
+            onClick={this.props.BorrarTarea.bind(this,tarea.id)}>
                 x
             </button>
 
